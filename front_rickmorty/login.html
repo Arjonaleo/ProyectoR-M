@@ -3,86 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Iniciar Sesión - Comicteca</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: url('https://images.hdqwalls.com/download/rick-and-morty-adventures-4k-28-2560x1440.jpg') no-repeat center center fixed;
-      background-size: cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      font-family: Arial, sans-serif;
-    }
-
-    .login-box {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
-      text-align: center;
-      width: 300px;
-    }
-
-    .login-box h2 {
-      margin-bottom: 20px;
-    }
-
-    .login-box input {
-      width: 90%;
-      padding: 10px;
-      margin: 8px 0;
-      border-radius: 10px;
-      border: 1px solid #aaa;
-    }
-
-    .login-box button {
-      background-color: #7d72f1;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      margin-top: 15px;
-      border-radius: 15px;
-      cursor: pointer;
-    }
-
-    .login-box button:hover {
-      background-color: #5c53d4;
-    }
-  </style>
+  <title>Iniciar Sesión - Rick & Morty Hub</title>
+  <!-- Enlaza el CSS específico -->
+  <link rel="stylesheet" href="login.css">
 </head>
 <body>
+  <header>
+    <h1>Rick & Morty Hub</h1>
+  </header>
 
-  <div class="login-box">
-    <h2>Iniciar Sesión</h2>
-    <input type="email" id="email" placeholder="Correo electrónico" required><br />
-    <input type="password" id="contraseña" placeholder="Contraseña" required><br />
-    <button onclick="login()">Entrar</button>
-    <p>¿No tienes cuenta? <a href="register.html">Regístrate aquí</a></p>
-  </div>
+  <main>
+    <section class="login-section">
+      <div class="login-box">
+        <h2>Iniciar Sesión</h2>
+        <form id="loginForm" novalidate>
+          <input type="email" id="email" placeholder="Correo electrónico" required>
+          <input type="password" id="contraseña" placeholder="Contraseña" required>
+          <button type="submit">Entrar</button>
+        </form>
+        <p>¿No tienes cuenta? <a href="register.html">Regístrate aquí</a></p>
+      </div>
+    </section>
+  </main>
 
+  <footer>
+    <p>© 2025 Rick & Morty Hub</p>
+  </footer>
+
+  <!-- Lógica central de autenticación -->
   <script src="../app.js"></script>
-  <script>
-    function login() {
-      const email = document.getElementById('email').value.trim();
-      const contraseña = document.getElementById('contraseña').value.trim();
-
-      if (!email || !contraseña) {
-        alert("❌ Por favor completa todos los campos.");
-        return;
-      }
-
-      const ok = iniciarSesion(email, contraseña);
-      if (ok) {
-        alert("✅ ¡Inicio de sesión exitoso!");
-        window.location.href = "catalogo.html";
-      } else {
-        alert("⚠️ Correo o contraseña incorrectos.");
-      }
-    }
-  </script>
-
+  <!-- Lógica específica de login -->
+  <script src="login.js" defer></script>
 </body>
 </html>

@@ -3,123 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Comicteca</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #121212;
-      color: #fff;
-      padding: 20px;
-    }
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
-    }
-    .header h1 {
-      font-size: 32px;
-    }
-    .logout-button {
-      background-color: #ff5a5f;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-    .catalogo {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 20px;
-    }
-    .comic-card {
-      background-color: #1f1f1f;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease;
-    }
-    .comic-card:hover {
-      transform: scale(1.05);
-    }
-    .comic-card img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-    }
-    .comic-card .info {
-      padding: 15px;
-      text-align: center;
-    }
-    .comic-card .info h3 {
-      margin-bottom: 10px;
-    }
-    .comic-card .info button {
-      background-color: #03dac5;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 8px;
-      cursor: pointer;
-      color: black;
-    }
-  </style>
+  <title>Rick & Morty Hub - Catálogo</title>
+  <!-- Enlaza el CSS específico -->
+  <link rel="stylesheet" href="catalogo.css">
 </head>
 <body>
-  <div class="header">
+  <header>
     <h1>Rick & Morty Hub</h1>
-    <button class="logout-button" onclick="cerrarSesion()">Cerrar sesión</button>
-  </div>
+    <button class="logout-button">Cerrar sesión</button>
+  </header>
 
-  <div class="catalogo" id="catalogo"></div>
+  <main>
+    <section class="catalogo" id="catalogo">
+      <!-- Aquí se inyectan las tarjetas de personajes -->
+    </section>
+  </main>
 
-  <script>
-    const comics = [
-      { titulo: "Rick", creador: "", portada: "https://cdn11.bigcommerce.com/s-ydriczk/images/stencil/1280x1280/products/90070/97752/Rick-and-Morty-Rick-Sanchez-Mini-Cardboard-Cutout-buy-now-at-starstills__32390.1678791899.jpg?c=2" },
-      { titulo: "Morty", creador: "", portada: "https://sketchok.com/images/articles/01-cartoons/007-rick-and-morty/07/11.jpg" },
-      { titulo: "Summer", creador: "", portada: "https://comicvine.gamespot.com/a/uploads/scale_small/6/66303/4472085-summer_in_ricksy_business.jpg" },
-      { titulo: "Beth", creador: "", portada: "https://static.tvtropes.org/pmwiki/pub/images/beth_smile.png" },
-      { titulo: "Jerry", creador: "", portada: "https://vignette.wikia.nocookie.net/ricksanchez/images/f/f6/Jerry_Smith.jpg/revision/latest?cb=20160609043244" },
-      { titulo: "Cluster Princess", creador: "", portada: "https://rick-and-morty-guide.vercel.app/_next/image?url=https:%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F6.jpeg&w=256&q=75" },
-      { titulo: "Abradolf", creador: "", portada: "https://i.pinimg.com/originals/15/17/20/1517204f2b4d32b7199c618bb29a0cd4.jpg" },
-      { titulo: "Adjudicator", creador: "", portada: "https://rickandmortyapi.com/api/character/avatar/8.jpeg" },
-      { titulo: "Agency Director", creador: "", portada: "https://static.tvmaze.com/uploads/images/medium_portrait/330/825704.jpg" },
-      { titulo: "Albert Einstein", creador: "", portada: "https://static.next-episode.net/actor-images/roles/11/rick-and-morty.albert-einstein.jpg" },
-      { titulo: "Alan Rails", creador: "", portada: "https://i.pinimg.com/originals/10/7a/6f/107a6f69ef243b7cbb7b94d9fd3db7ab.jpg" },
-      { titulo: "Alexander", creador: "", portada: "https://ih1.redbubble.net/image.988109494.9310/bg,f8f8f8-flat,750x,075,f-pad,750x1000,f8f8f8.u1.jpg" },
-      { titulo: "Evil Morty", creador: "", portada: "https://comicvine.gamespot.com/a/uploads/original/11179/111793425/9173461-evil_morty_unmortricken.jpg" }
-    ];
+  <footer>
+    <p>© 2025 Rick & Morty Hub</p>
+  </footer>
 
-    const contenedor = document.getElementById("catalogo");
-
-    comics.forEach((comic) => {
-      const id = comic.titulo.toLowerCase().replace(/\s+/g, '-');
-      const card = document.createElement("div");
-      card.className = "comic-card";
-
-      const botonLeer = `<button onclick="window.location.href='lector.html?id=${id}'">Leer</button>`;
-
-      card.innerHTML = `
-        <img src="${comic.portada}" alt="${comic.titulo}" />
-        <div class="info">
-          <h3>${comic.titulo}</h3>
-          <p><em>${comic.creador}</em></p>
-          ${botonLeer}
-        </div>
-      `;
-
-      contenedor.appendChild(card);
-    });
-
-    function cerrarSesion() {
-      localStorage.removeItem("usuarioActual");
-      window.location.href = "login.html";
-    }
-  </script>
+  <!-- Lógica central de autenticación y sesión -->
+  <script src="../app.js"></script>
+  <!-- Lógica específica de catálogo -->
+  <script src="catalogo.js" defer></script>
 </body>
 </html>

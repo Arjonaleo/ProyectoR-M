@@ -2,56 +2,30 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Lector de Cómic</title>
-  <style>
-    body {
-      margin: 0;
-      background: #000;
-    }
-    iframe {
-      width: 100vw;
-      height: 100vh;
-      border: none;
-    }
-    .error {
-      color: white;
-      text-align: center;
-      padding-top: 40px;
-      font-family: sans-serif;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Perfil de Personaje - Rick & Morty Hub</title>
+  <!-- Enlaza el CSS específico -->
+  <link rel="stylesheet" href="lector.css">
 </head>
 <body>
-  <div id="visor"></div>
+  <header>
+    <h1>Perfil del Personaje</h1>
+    <button class="logout-button">Cerrar sesión</button>
+  </header>
 
-  <script>
-    const pdfs = {
-      "rick": "../assets/description/rick.pdf",
-      "morty": "../assets/description/morty.pdf",
-      "summer": "../assets/description/summer.pdf",
-      "beth": "../assets/description/beth.pdf",
-      "jerry": "../assets/description/jerry.pdf",
-      "cluster-princess": "../assets/description/cluster-princess.pdf",
-      "abradolf": "../assets/description/abradolf.pdf",
-      "adjudicator": "../assets/description/adjudicator.pdf",
-      "agency-director": "../assets/description/agency-director.pdf",
-      "albert-einstein": "../assets/description/albert-einstein.pdf",
-      "alan-rails": "../assets/description/alan-rails.pdf",
-      "alexander": "../assets/description/alexander.pdf",
-      "evil-morty": "../assets/description/evil-morty.pdf"
-    };
+  <main>
+    <section id="visor" class="visor-section">
+      <!-- Aquí se insertará el iframe o el mensaje de error -->
+    </section>
+  </main>
 
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
-    const container = document.getElementById("visor");
+  <footer>
+    <p>© 2025 Rick & Morty Hub</p>
+  </footer>
 
-    if (id && pdfs[id]) {
-      const iframe = document.createElement("iframe");
-      iframe.src = pdfs[id];
-      container.appendChild(iframe);
-    } else {
-      container.innerHTML = "<div class='error'>⚠️ No se encontró el PDF para este personaje.</div>";
-    }
-  </script>
+  <!-- Lógica central de autenticación -->
+  <script src="../app.js"></script>
+  <!-- Lógica específica del lector -->
+  <script src="lector.js" defer></script>
 </body>
 </html>

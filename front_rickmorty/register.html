@@ -3,85 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Registrarse - Comicteca</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: url('https://images.hdqwalls.com/download/rick-and-morty-adventures-4k-28-2560x1440.jpg') no-repeat center center fixed;
-      background-size: cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      font-family: Arial, sans-serif;
-    }
-
-    .register-box {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
-      text-align: center;
-      width: 300px;
-    }
-
-    .register-box h2 {
-      margin-bottom: 20px;
-    }
-
-    .register-box input {
-      width: 90%;
-      padding: 10px;
-      margin: 8px 0;
-      border-radius: 10px;
-      border: 1px solid #aaa;
-    }
-
-    .register-box button {
-      background-color: #72c275;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      margin-top: 15px;
-      border-radius: 15px;
-      cursor: pointer;
-    }
-
-    .register-box button:hover {
-      background-color: #5aaa5e;
-    }
-  </style>
+  <title>Registrarse - Rick & Morty Hub</title>
+  <!-- Enlaza el CSS específico -->
+  <link rel="stylesheet" href="register.css">
 </head>
 <body>
+  <header>
+    <h1>Rick & Morty Hub</h1>
+  </header>
 
-  <div class="register-box">
-    <h2>Crear Cuenta</h2>
-    <input type="text" id="nombre" placeholder="Nombre completo" required><br />
-    <input type="email" id="email" placeholder="Correo electrónico" required><br />
-    <input type="password" id="contraseña" placeholder="Contraseña" required><br />
-    <button onclick="registrar()">Registrarse</button>
-    <p>¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
-  </div>
+  <main>
+    <section class="register-section">
+      <div class="register-box">
+        <h2>Crear Cuenta</h2>
+        <form id="registerForm" novalidate>
+          <input type="text" id="nombre" placeholder="Nombre completo" required>
+          <input type="email" id="email" placeholder="Correo electrónico" required>
+          <input type="password" id="contraseña" placeholder="Contraseña" required>
+          <button type="submit">Registrarse</button>
+        </form>
+        <p>¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
+      </div>
+    </section>
+  </main>
 
+  <footer>
+    <p>© 2025 Rick & Morty Hub</p>
+  </footer>
+
+  <!-- Lógica central de autenticación -->
   <script src="../app.js"></script>
-  <script>
-    function registrar() {
-      const nombre = document.getElementById('nombre').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const contraseña = document.getElementById('contraseña').value.trim();
-
-      if (!nombre || !email || !contraseña) {
-        alert("❌ Todos los campos son obligatorios.");
-        return;
-      }
-
-      const exito = registrarUsuario(nombre, email, contraseña);
-      if (exito) {
-        window.location.href = "login.html";
-      }
-    }
-  </script>
-
+  <!-- Lógica específica de registro -->
+  <script src="register.js" defer></script>
 </body>
 </html>
