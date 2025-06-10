@@ -80,28 +80,29 @@
 
   <script>
     const comics = [
-      { titulo: "Super Man", creador: "Jerry Mcguire", portada: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1404797709i/22676863.jpg" },
-      { titulo: "Batman", creador: "Bob Kane", portada: "https://i.pinimg.com/originals/b0/77/15/b077156aa59f974156dfacefe577d731.jpg" },
-      { titulo: "Silver Surfer", creador: "John Buscema", portada: "https://m.media-amazon.com/images/I/915J8bUmZuL._AC_UF894,1000_QL80_.jpg" },
-      { titulo: "Ms. Marvel", creador: "G. Willow Wilson", portada: "https://www.cuartomundo.cl/wp-content/uploads/2019/03/ms.-marvel-1.jpg" },
-      { titulo: "Watchmen", creador: "Alan Moore", portada: "https://imagenes.elpais.com/resizer/v2/KBXMELGIMFJFVDCBMKIWZ2RZZU.jpg?auth=71fe5228e4fd528dcc63666feeb5aa7b7ca68b78213e804a152dc8a7222f042e&width=414" },
-      { titulo: "Deadpool", creador: "Fabian Nicieza", portada: "https://preview.redd.it/t2b4vog9h9i81.jpg?auto=webp&s=bd3c15732044170d40575123591a00bd5dc6213d" },
-      { titulo: "Punisher", creador: "Gerry Conway", portada: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwBDNPogyhCNR3E6x9Dg9gx_E28-hECDIhgg&s" },
-      { titulo: "X-Men", creador: "Stan Lee", portada: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1afjcmEwvJOvpAd0caQewJLBcdahNa2vKRw&s" },
-      { titulo: "Capitán Marvel", creador: "Roy Thomas", portada: "https://fbi.cults3d.com/uploaders/38055520/illustration-file/b00d517e-0d7d-444e-b3a7-d438fc795372/trataCapture.png" },
-      { titulo: "Iron Man", creador: "Stan Lee", portada: "https://i.pinimg.com/474x/e7/61/9f/e7619f0fede80d65a25596ef09f74198.jpg" },
-      { titulo: "Old Skull", creador: "Clásicos", portada: "https://www.oldskull.net/wp-content/uploads/2007/04/portadas-comics-oldskull-4.jpg" },
-      { titulo: "Avengers", creador: "Jack Kirby", portada: "https://i0.wp.com/www.universomarvel.com/wp-content/uploads/2023/02/AVEN2023001_Cov-scaled.jpg?ssl=1" },
-      { titulo: "Vintage Spider-Man", creador: "Marvel Comics", portada: "https://previews.123rf.com/images/jewhyte/jewhyte2301/jewhyte230100028/200504528-calgary-alberta-14-de-enero-de-2023-portada-de-un-c%C3%B3mic-vintage-de-marvel-comics-spider-man.jpg" }
+      { titulo: "Rick", creador: "", portada: "https://cdn11.bigcommerce.com/s-ydriczk/images/stencil/1280x1280/products/90070/97752/Rick-and-Morty-Rick-Sanchez-Mini-Cardboard-Cutout-buy-now-at-starstills__32390.1678791899.jpg?c=2" },
+      { titulo: "Morty", creador: "", portada: "https://sketchok.com/images/articles/01-cartoons/007-rick-and-morty/07/11.jpg" },
+      { titulo: "Summer", creador: "", portada: "https://comicvine.gamespot.com/a/uploads/scale_small/6/66303/4472085-summer_in_ricksy_business.jpg" },
+      { titulo: "Beth", creador: "", portada: "https://static.tvtropes.org/pmwiki/pub/images/beth_smile.png" },
+      { titulo: "Jerry", creador: "", portada: "https://vignette.wikia.nocookie.net/ricksanchez/images/f/f6/Jerry_Smith.jpg/revision/latest?cb=20160609043244" },
+      { titulo: "Cluster Princess", creador: "", portada: "https://rick-and-morty-guide.vercel.app/_next/image?url=https:%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F6.jpeg&w=256&q=75" },
+      { titulo: "Abradolf", creador: "", portada: "https://i.pinimg.com/originals/15/17/20/1517204f2b4d32b7199c618bb29a0cd4.jpg" },
+      { titulo: "Adjudicator", creador: "", portada: "https://rickandmortyapi.com/api/character/avatar/8.jpeg" },
+      { titulo: "Agency Director", creador: "", portada: "https://static.tvmaze.com/uploads/images/medium_portrait/330/825704.jpg" },
+      { titulo: "Albert Einstein", creador: "", portada: "https://static.next-episode.net/actor-images/roles/11/rick-and-morty.albert-einstein.jpg" },
+      { titulo: "Alan Rails", creador: "", portada: "https://i.pinimg.com/originals/10/7a/6f/107a6f69ef243b7cbb7b94d9fd3db7ab.jpg" },
+      { titulo: "Alexander", creador: "", portada: "https://ih1.redbubble.net/image.988109494.9310/bg,f8f8f8-flat,750x,075,f-pad,750x1000,f8f8f8.u1.jpg" },
+      { titulo: "Evil Morty", creador: "", portada: "https://comicvine.gamespot.com/a/uploads/original/11179/111793425/9173461-evil_morty_unmortricken.jpg" }
     ];
 
     const contenedor = document.getElementById("catalogo");
 
     comics.forEach((comic) => {
+      const id = comic.titulo.toLowerCase().replace(/\s+/g, '-');
       const card = document.createElement("div");
       card.className = "comic-card";
 
-      const botonLeer = `<button onclick="window.location.href='lector.html'">Leer</button>`;
+      const botonLeer = `<button onclick="window.location.href='lector.html?id=${id}'">Leer</button>`;
 
       card.innerHTML = `
         <img src="${comic.portada}" alt="${comic.titulo}" />
