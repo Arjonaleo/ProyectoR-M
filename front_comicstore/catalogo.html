@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comicteca</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #121212;
+      color: #fff;
+      padding: 20px;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    .header h1 {
+      font-size: 32px;
+    }
+    .logout-button {
+      background-color: #ff5a5f;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .catalogo {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .comic-card {
+      background-color: #1f1f1f;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+    .comic-card:hover {
+      transform: scale(1.05);
+    }
+    .comic-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+    .comic-card .info {
+      padding: 15px;
+      text-align: center;
+    }
+    .comic-card .info h3 {
+      margin-bottom: 10px;
+    }
+    .comic-card .info button {
+      background-color: #03dac5;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Comicteca</h1>
+    <button class="logout-button" onclick="cerrarSesion()">Cerrar sesión</button>
+  </div>
+
+  <div class="catalogo" id="catalogo"></div>
+
+  <script>
+    const comics = [
+      { titulo: "Super Man", creador: "Jerry Mcguire", portada: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1404797709i/22676863.jpg" },
+      { titulo: "Batman", creador: "Bob Kane", portada: "https://i.pinimg.com/originals/b0/77/15/b077156aa59f974156dfacefe577d731.jpg" },
+      { titulo: "Silver Surfer", creador: "John Buscema", portada: "https://m.media-amazon.com/images/I/915J8bUmZuL._AC_UF894,1000_QL80_.jpg" },
+      { titulo: "Ms. Marvel", creador: "G. Willow Wilson", portada: "https://www.cuartomundo.cl/wp-content/uploads/2019/03/ms.-marvel-1.jpg" },
+      { titulo: "Watchmen", creador: "Alan Moore", portada: "https://imagenes.elpais.com/resizer/v2/KBXMELGIMFJFVDCBMKIWZ2RZZU.jpg?auth=71fe5228e4fd528dcc63666feeb5aa7b7ca68b78213e804a152dc8a7222f042e&width=414" },
+      { titulo: "Deadpool", creador: "Fabian Nicieza", portada: "https://preview.redd.it/t2b4vog9h9i81.jpg?auto=webp&s=bd3c15732044170d40575123591a00bd5dc6213d" },
+      { titulo: "Punisher", creador: "Gerry Conway", portada: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwBDNPogyhCNR3E6x9Dg9gx_E28-hECDIhgg&s" },
+      { titulo: "X-Men", creador: "Stan Lee", portada: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1afjcmEwvJOvpAd0caQewJLBcdahNa2vKRw&s" },
+      { titulo: "Capitán Marvel", creador: "Roy Thomas", portada: "https://fbi.cults3d.com/uploaders/38055520/illustration-file/b00d517e-0d7d-444e-b3a7-d438fc795372/trataCapture.png" },
+      { titulo: "Iron Man", creador: "Stan Lee", portada: "https://i.pinimg.com/474x/e7/61/9f/e7619f0fede80d65a25596ef09f74198.jpg" },
+      { titulo: "Old Skull", creador: "Clásicos", portada: "https://www.oldskull.net/wp-content/uploads/2007/04/portadas-comics-oldskull-4.jpg" },
+      { titulo: "Avengers", creador: "Jack Kirby", portada: "https://i0.wp.com/www.universomarvel.com/wp-content/uploads/2023/02/AVEN2023001_Cov-scaled.jpg?ssl=1" },
+      { titulo: "Vintage Spider-Man", creador: "Marvel Comics", portada: "https://previews.123rf.com/images/jewhyte/jewhyte2301/jewhyte230100028/200504528-calgary-alberta-14-de-enero-de-2023-portada-de-un-c%C3%B3mic-vintage-de-marvel-comics-spider-man.jpg" }
+    ];
+
+    const contenedor = document.getElementById("catalogo");
+
+    comics.forEach((comic) => {
+      const card = document.createElement("div");
+      card.className = "comic-card";
+
+      const botonLeer = `<button onclick="window.location.href='lector.html'">Leer</button>`;
+
+      card.innerHTML = `
+        <img src="${comic.portada}" alt="${comic.titulo}" />
+        <div class="info">
+          <h3>${comic.titulo}</h3>
+          <p><em>${comic.creador}</em></p>
+          ${botonLeer}
+        </div>
+      `;
+
+      contenedor.appendChild(card);
+    });
+
+    function cerrarSesion() {
+      localStorage.removeItem("usuarioActual");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

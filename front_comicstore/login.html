@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iniciar Sesión - Comicteca</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('https://i.ebayimg.com/images/g/w4wAAOSw-oNc2n3c/s-l1200.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    .login-box {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      text-align: center;
+      width: 300px;
+    }
+
+    .login-box h2 {
+      margin-bottom: 20px;
+    }
+
+    .login-box input {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 10px;
+      border: 1px solid #aaa;
+    }
+
+    .login-box button {
+      background-color: #7d72f1;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 15px;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+
+    .login-box button:hover {
+      background-color: #5c53d4;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-box">
+    <h2>Iniciar Sesión</h2>
+    <input type="email" id="email" placeholder="Correo electrónico" required><br />
+    <input type="password" id="contraseña" placeholder="Contraseña" required><br />
+    <button onclick="login()">Entrar</button>
+    <p>¿No tienes cuenta? <a href="register.html">Regístrate aquí</a></p>
+  </div>
+
+  <script src="../app.js"></script>
+  <script>
+    function login() {
+      const email = document.getElementById('email').value.trim();
+      const contraseña = document.getElementById('contraseña').value.trim();
+
+      if (!email || !contraseña) {
+        alert("❌ Por favor completa todos los campos.");
+        return;
+      }
+
+      const ok = iniciarSesion(email, contraseña);
+      if (ok) {
+        alert("✅ ¡Inicio de sesión exitoso!");
+        window.location.href = "catalogo.html";
+      } else {
+        alert("⚠️ Correo o contraseña incorrectos.");
+      }
+    }
+  </script>
+
+</body>
+</html>
