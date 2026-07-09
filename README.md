@@ -2,12 +2,7 @@
 
 > A vanilla JavaScript web application that consumes the [Rick and Morty REST API](https://rickandmortyapi.com/) to display and browse characters from the show.
 
-<!-- 
-   PERSONALIZA ESTO: Reemplaza esta línea con un screenshot o GIF real de tu app.
-  Opción rápida: toma un screenshot, súbelo al repo en una carpeta /assets, 
-  y cambia la URL abajo.
--->
-![App Screenshot](assets/screenshot.png)
+
 
 ---
 
